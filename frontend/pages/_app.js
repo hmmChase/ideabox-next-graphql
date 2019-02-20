@@ -1,7 +1,7 @@
 import App, { Container } from 'next/app';
 import { ApolloProvider } from 'react-apollo';
 import { ThemeProvider } from 'styled-components';
-import withApollo from '../apollo/withApollo';
+import withApollo from '../graphql/withApollo';
 import theme from '../styles/theme.style';
 import Layout from '../components/Layout/Layout';
 
