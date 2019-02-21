@@ -6,7 +6,7 @@
     { "src": "backend/src/index.js", "use": "@now/node-server" }
   ],
   "routes": [
-    { "src": "/(.*)", "dest": "/frontend/$1" },
-    { "src": "/api/(.*)", "dest": "/backend/src/index.js" }
+    { "src": "/(.*)", "dest": "frontend/$1" },
+    { "src": "/api/(.*)", "dest": "backend/src/index.js" }
   ]
 }
