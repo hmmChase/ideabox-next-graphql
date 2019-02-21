@@ -1,6 +1,6 @@
 const Mutation = {
-  signUp: (parent, args, ctx, info) => {
-    return ctx.prisma.createUser({ ...args }, info);
+  newIdea: (parent, args, ctx, info) => {
+    return ctx.prisma.createIdea({ ...args }, info);
   }
 };
 

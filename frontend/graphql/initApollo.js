@@ -1,6 +1,5 @@
 import { ApolloClient, InMemoryCache, HttpLink } from 'apollo-boost';
 import fetch from 'isomorphic-unfetch';
-import { DEV_ENDPOINT, PROD_ENDPOINT } from '../config';
 
 let apolloClient = null;
 
@@ -14,7 +13,7 @@ function createClient(initialState) {
     connectToDevTools: process.browser,
     ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
     link: new HttpLink({
-      uri: process.env.NODE_ENV === 'development' ? DEV_ENDPOINT : PROD_ENDPOINT,
+      uri: 'http://localhost:3333',
       headers: {
         authorization:
           'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InNlcnZpY2UiOiJiYWNrZW5kQHByb2QiLCJyb2xlcyI6WyJhZG1pbiJdfSwiaWF0IjoxNTUwNjk5OTU2LCJleHAiOjE1NTEzMDQ3NTZ9.-Wj1q3RiEycrpESzf7w_nJMqWcFELa9sIdv1hp7WR9I'

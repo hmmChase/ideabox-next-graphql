@@ -3,7 +3,7 @@ import { Mutation } from 'react-apollo';
 
 const CREATE_IDEA_MUTATION = gql`
   mutation CREATE_IDEA_MUTATION($idea: String!) {
-    createIdea(idea: $idea) {
+    newIdea(idea: $idea) {
       id
     }
   }
@@ -28,21 +28,21 @@ class IdeaCardForm extends React.Component {
     this.setState({ [name]: value }, () => this.canSubmit());
   };
 
-  handleSubmitIdeaForm = async (event, createIdea) => {
+  handleSubmitIdeaForm = async (event, newIdea) => {
     event.preventDefault();
     this.setState({ isSubmitDisabled: true });
     // await this.props.dispatchAddIdea(this.state.idea);
-    createIdea();
+    newIdea();
     this.setState({ idea: '' }, () => this.canSubmit());
   };
 
   render() {
     return (
       <Mutation mutation={CREATE_IDEA_MUTATION} variables={{ idea: this.state.idea }}>
-        {createIdea => (
+        {newIdea => (
           <form
             className="IdeaCardForm"
-            onSubmit={event => this.handleSubmitIdeaForm(event, createIdea)}
+            onSubmit={event => this.handleSubmitIdeaForm(event, newIdea)}
           >
             <input
               className="IdeaCardInput"
