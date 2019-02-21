@@ -1,4 +1,4 @@
-type User {
+type Idea {
   id: ID! @unique
-  name: String!
+  idea: String!
 }

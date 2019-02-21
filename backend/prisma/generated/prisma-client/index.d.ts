@@ -14,7 +14,7 @@ export type AtLeastOne<T, U = { [K in keyof T]: Pick<T, K> }> = Partial<T> &
   U[keyof U];
 
 export interface Exists {
-  user: (where?: UserWhereInput) => Promise<boolean>;
+  idea: (where?: IdeaWhereInput) => Promise<boolean>;
 }
 
 export interface Node {}
@@ -36,47 +36,47 @@ export interface Prisma {
    * Queries
    */
 
-  user: (where: UserWhereUniqueInput) => UserPromise;
-  users: (args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
+  idea: (where: IdeaWhereUniqueInput) => IdeaPromise;
+  ideas: (args?: {
+    where?: IdeaWhereInput;
+    orderBy?: IdeaOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => FragmentableArray<User>;
-  usersConnection: (args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
+  }) => FragmentableArray<Idea>;
+  ideasConnection: (args?: {
+    where?: IdeaWhereInput;
+    orderBy?: IdeaOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
     first?: Int;
     last?: Int;
-  }) => UserConnectionPromise;
+  }) => IdeaConnectionPromise;
   node: (args: { id: ID_Output }) => Node;
 
   /**
    * Mutations
    */
 
-  createUser: (data: UserCreateInput) => UserPromise;
-  updateUser: (args: {
-    data: UserUpdateInput;
-    where: UserWhereUniqueInput;
-  }) => UserPromise;
-  updateManyUsers: (args: {
-    data: UserUpdateManyMutationInput;
-    where?: UserWhereInput;
+  createIdea: (data: IdeaCreateInput) => IdeaPromise;
+  updateIdea: (args: {
+    data: IdeaUpdateInput;
+    where: IdeaWhereUniqueInput;
+  }) => IdeaPromise;
+  updateManyIdeas: (args: {
+    data: IdeaUpdateManyMutationInput;
+    where?: IdeaWhereInput;
   }) => BatchPayloadPromise;
-  upsertUser: (args: {
-    where: UserWhereUniqueInput;
-    create: UserCreateInput;
-    update: UserUpdateInput;
-  }) => UserPromise;
-  deleteUser: (where: UserWhereUniqueInput) => UserPromise;
-  deleteManyUsers: (where?: UserWhereInput) => BatchPayloadPromise;
+  upsertIdea: (args: {
+    where: IdeaWhereUniqueInput;
+    create: IdeaCreateInput;
+    update: IdeaUpdateInput;
+  }) => IdeaPromise;
+  deleteIdea: (where: IdeaWhereUniqueInput) => IdeaPromise;
+  deleteManyIdeas: (where?: IdeaWhereInput) => BatchPayloadPromise;
 
   /**
    * Subscriptions
@@ -86,9 +86,9 @@ export interface Prisma {
 }
 
 export interface Subscription {
-  user: (
-    where?: UserSubscriptionWhereInput
-  ) => UserSubscriptionPayloadSubscription;
+  idea: (
+    where?: IdeaSubscriptionWhereInput
+  ) => IdeaSubscriptionPayloadSubscription;
 }
 
 export interface ClientConstructor<T> {
@@ -99,11 +99,11 @@ export interface ClientConstructor<T> {
  * Types
  */
 
-export type UserOrderByInput =
+export type IdeaOrderByInput =
   | "id_ASC"
   | "id_DESC"
-  | "name_ASC"
-  | "name_DESC"
+  | "idea_ASC"
+  | "idea_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
@@ -111,19 +111,19 @@ export type UserOrderByInput =
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export interface UserCreateInput {
-  name: String;
+export interface IdeaCreateInput {
+  idea: String;
 }
 
-export interface UserUpdateInput {
-  name?: String;
+export interface IdeaUpdateInput {
+  idea?: String;
 }
 
-export interface UserUpdateManyMutationInput {
-  name?: String;
+export interface IdeaUpdateManyMutationInput {
+  idea?: String;
 }
 
-export interface UserWhereInput {
+export interface IdeaWhereInput {
   id?: ID_Input;
   id_not?: ID_Input;
   id_in?: ID_Input[] | ID_Input;
@@ -138,37 +138,37 @@ export interface UserWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
-  name?: String;
-  name_not?: String;
-  name_in?: String[] | String;
-  name_not_in?: String[] | String;
-  name_lt?: String;
-  name_lte?: String;
-  name_gt?: String;
-  name_gte?: String;
-  name_contains?: String;
-  name_not_contains?: String;
-  name_starts_with?: String;
-  name_not_starts_with?: String;
-  name_ends_with?: String;
-  name_not_ends_with?: String;
-  AND?: UserWhereInput[] | UserWhereInput;
-  OR?: UserWhereInput[] | UserWhereInput;
-  NOT?: UserWhereInput[] | UserWhereInput;
+  idea?: String;
+  idea_not?: String;
+  idea_in?: String[] | String;
+  idea_not_in?: String[] | String;
+  idea_lt?: String;
+  idea_lte?: String;
+  idea_gt?: String;
+  idea_gte?: String;
+  idea_contains?: String;
+  idea_not_contains?: String;
+  idea_starts_with?: String;
+  idea_not_starts_with?: String;
+  idea_ends_with?: String;
+  idea_not_ends_with?: String;
+  AND?: IdeaWhereInput[] | IdeaWhereInput;
+  OR?: IdeaWhereInput[] | IdeaWhereInput;
+  NOT?: IdeaWhereInput[] | IdeaWhereInput;
 }
 
-export interface UserSubscriptionWhereInput {
+export interface IdeaSubscriptionWhereInput {
   mutation_in?: MutationType[] | MutationType;
   updatedFields_contains?: String;
   updatedFields_contains_every?: String[] | String;
   updatedFields_contains_some?: String[] | String;
-  node?: UserWhereInput;
-  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+  node?: IdeaWhereInput;
+  AND?: IdeaSubscriptionWhereInput[] | IdeaSubscriptionWhereInput;
+  OR?: IdeaSubscriptionWhereInput[] | IdeaSubscriptionWhereInput;
+  NOT?: IdeaSubscriptionWhereInput[] | IdeaSubscriptionWhereInput;
 }
 
-export type UserWhereUniqueInput = AtLeastOne<{
+export type IdeaWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
 }>;
 
@@ -176,18 +176,18 @@ export interface NodeNode {
   id: ID_Output;
 }
 
-export interface AggregateUser {
+export interface AggregateIdea {
   count: Int;
 }
 
-export interface AggregateUserPromise
-  extends Promise<AggregateUser>,
+export interface AggregateIdeaPromise
+  extends Promise<AggregateIdea>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUser>>,
+export interface AggregateIdeaSubscription
+  extends Promise<AsyncIterator<AggregateIdea>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
@@ -208,103 +208,103 @@ export interface BatchPayloadSubscription
   count: () => Promise<AsyncIterator<Long>>;
 }
 
-export interface UserPreviousValues {
+export interface IdeaPreviousValues {
   id: ID_Output;
-  name: String;
+  idea: String;
 }
 
-export interface UserPreviousValuesPromise
-  extends Promise<UserPreviousValues>,
+export interface IdeaPreviousValuesPromise
+  extends Promise<IdeaPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
+  idea: () => Promise<String>;
 }
 
-export interface UserPreviousValuesSubscription
-  extends Promise<AsyncIterator<UserPreviousValues>>,
+export interface IdeaPreviousValuesSubscription
+  extends Promise<AsyncIterator<IdeaPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
+  idea: () => Promise<AsyncIterator<String>>;
 }
 
-export interface UserEdge {
-  node: User;
+export interface IdeaEdge {
+  node: Idea;
   cursor: String;
 }
 
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = UserPromise>() => T;
+export interface IdeaEdgePromise extends Promise<IdeaEdge>, Fragmentable {
+  node: <T = IdeaPromise>() => T;
   cursor: () => Promise<String>;
 }
 
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
+export interface IdeaEdgeSubscription
+  extends Promise<AsyncIterator<IdeaEdge>>,
     Fragmentable {
-  node: <T = UserSubscription>() => T;
+  node: <T = IdeaSubscription>() => T;
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface UserSubscriptionPayload {
+export interface IdeaSubscriptionPayload {
   mutation: MutationType;
-  node: User;
+  node: Idea;
   updatedFields: String[];
-  previousValues: UserPreviousValues;
+  previousValues: IdeaPreviousValues;
 }
 
-export interface UserSubscriptionPayloadPromise
-  extends Promise<UserSubscriptionPayload>,
+export interface IdeaSubscriptionPayloadPromise
+  extends Promise<IdeaSubscriptionPayload>,
     Fragmentable {
   mutation: () => Promise<MutationType>;
-  node: <T = UserPromise>() => T;
+  node: <T = IdeaPromise>() => T;
   updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValuesPromise>() => T;
+  previousValues: <T = IdeaPreviousValuesPromise>() => T;
 }
 
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
+export interface IdeaSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<IdeaSubscriptionPayload>>,
     Fragmentable {
   mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
+  node: <T = IdeaSubscription>() => T;
   updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
+  previousValues: <T = IdeaPreviousValuesSubscription>() => T;
 }
 
-export interface User {
+export interface Idea {
   id: ID_Output;
-  name: String;
+  idea: String;
 }
 
-export interface UserPromise extends Promise<User>, Fragmentable {
+export interface IdeaPromise extends Promise<Idea>, Fragmentable {
   id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
+  idea: () => Promise<String>;
 }
 
-export interface UserSubscription
-  extends Promise<AsyncIterator<User>>,
+export interface IdeaSubscription
+  extends Promise<AsyncIterator<Idea>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
+  idea: () => Promise<AsyncIterator<String>>;
 }
 
-export interface UserConnection {
+export interface IdeaConnection {
   pageInfo: PageInfo;
-  edges: UserEdge[];
+  edges: IdeaEdge[];
 }
 
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
+export interface IdeaConnectionPromise
+  extends Promise<IdeaConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
+  edges: <T = FragmentableArray<IdeaEdge>>() => T;
+  aggregate: <T = AggregateIdeaPromise>() => T;
 }
 
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
+export interface IdeaConnectionSubscription
+  extends Promise<AsyncIterator<IdeaConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<IdeaEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateIdeaSubscription>() => T;
 }
 
 export interface PageInfo {
@@ -359,7 +359,7 @@ export type Boolean = boolean;
 
 export const models: Model[] = [
   {
-    name: "User",
+    name: "Idea",
     embedded: false
   }
 ];

@@ -1,10 +1,10 @@
 const Query = {
-  user: (parent, args, ctx, info) => {
-    return ctx.prisma.user({ where: { id: args.id } }, info);
+  idea: (parent, args, ctx, info) => {
+    return ctx.prisma.idea({ where: { id: args.id } }, info);
   },
 
-  users: (parent, args, ctx, info) => {
-    return ctx.prisma.users({}, info);
+  ideas: (parent, args, ctx, info) => {
+    return ctx.prisma.ideas({}, info);
   }
 };
 

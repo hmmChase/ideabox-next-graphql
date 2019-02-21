@@ -1,18 +1,18 @@
-import { Query } from 'react-apollo';
 import { gql } from 'apollo-boost';
+import { Query } from 'react-apollo';
 import IdeaCard from '../IdeaCard/IdeaCard';
 
 const ALL_IDEAS_QUERY = gql`
   query ALL_IDEAS_QUERY {
-    users {
+    ideas {
       id
-      name
+      idea
     }
   }
 `;
 
 class IdeaContainer extends React.PureComponent {
-  displayIdeaCards = data => data.users
+  displayIdeaCards = data => data.ideas
     .map(idea => <IdeaCard key={`ideaCard${idea.id}`} {...idea} />)
     .sort((a, b) => b.props.id - a.props.id);
 

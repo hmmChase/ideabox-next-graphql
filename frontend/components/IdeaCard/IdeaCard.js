@@ -1,7 +1,7 @@
 class IdeaCard extends React.Component {
   state = {
-    prevIdea: this.props.name,
-    nextIdea: this.props.name
+    prevIdea: this.props.idea,
+    nextIdea: this.props.idea
   };
 
   handleInputIdeaCard = (event) => {
