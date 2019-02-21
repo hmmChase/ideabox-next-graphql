@@ -1,8 +1,10 @@
 # Specifies the HTTP endpoint of your Prisma API.
-endpoint: https://us1.prisma.sh/chase-c544a8/backend/dev
+endpoint: ${env:PRISMA_ENDPOINT}
 
 # Defines your models, each model is mapped to the database as a table.
 datamodel: datamodel.prisma
+
+secret: ${env:PRISMA_SECRET}
 
 # Specifies the language and directory for the generated Prisma client.
 generate:
@@ -15,7 +17,3 @@ generate:
 hooks:
   post-deploy:
     - prisma generate
-
-# Seeds initial data into the database by running a script.
-seed:
-  run: node ./prisma/seed.js
