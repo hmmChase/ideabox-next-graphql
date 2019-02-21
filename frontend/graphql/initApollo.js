@@ -9,14 +9,15 @@ if (!process.browser) {
 }
 
 function createClient(initialState) {
+  console.log('process.env.PRISMA_TOKEN: ', process.env.PRISMA_TOKEN);
+
   return new ApolloClient({
     connectToDevTools: process.browser,
     ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
     link: new HttpLink({
       uri: 'http://localhost:3333',
       headers: {
-        authorization:
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InNlcnZpY2UiOiJiYWNrZW5kQHByb2QiLCJyb2xlcyI6WyJhZG1pbiJdfSwiaWF0IjoxNTUwNjk5OTU2LCJleHAiOjE1NTEzMDQ3NTZ9.-Wj1q3RiEycrpESzf7w_nJMqWcFELa9sIdv1hp7WR9I'
+        authorization: `Bearer ${process.env.PRISMA_TOKEN}`
       },
 
       credentials: 'same-origin' // Additional fetch() options like `credentials` or `headers`
