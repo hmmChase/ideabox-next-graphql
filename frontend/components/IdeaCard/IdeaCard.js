@@ -1,12 +1,23 @@
+import { gql } from 'apollo-boost';
+import { Mutation } from 'react-apollo';
+
+const DELETE_IDEA_MUTATION = gql`
+  mutation DELETE_IDEA_MUTATION($id: ID!) {
+    deleteIdea(id: $id) {
+      id
+    }
+  }
+`;
+
 class IdeaCard extends React.Component {
   state = {
     prevIdea: this.props.idea,
     nextIdea: this.props.idea
   };
 
-  handleInputIdeaCard = (event) => {
+  handleInputIdeaCard = (e) => {
     this.setState(
-      { nextIdea: event.target.innerText }
+      { nextIdea: e.target.innerText }
       // async () => await this.props.dispatchUpdateIdea(
       //   this.props.id,
       //   this.state.nextIdea,
@@ -15,27 +26,33 @@ class IdeaCard extends React.Component {
     );
   };
 
-  handleClickDeleteBtn = (event) => {
-    // event.target.disabled = true;
+  handleClickDeleteBtn = (e, deleteIdea) => {
+    e.target.disabled = true;
     // this.props.dispatchDeleteIdea(this.props.id, this.props.stateIdeas);
+    deleteIdea();
   };
 
   render() {
     return (
       <li className="IdeaCard">
         <div className="ideaCardContent">
-          <button
-            className="deleteBtn"
-            type="button"
-            onClick={event => this.handleClickDeleteBtn(event)}
-          >
-            X
-          </button>
+          <Mutation mutation={DELETE_IDEA_MUTATION} variables={{ id: this.props.id }}>
+            {deleteIdea => (
+              <button
+                className="deleteBtn"
+                type="button"
+                onClick={e => this.handleClickDeleteBtn(e, deleteIdea)}
+              >
+                X
+              </button>
+            )}
+          </Mutation>
+
           <p
             className="ideaCardText"
             contentEditable
             suppressContentEditableWarning
-            onInput={event => this.handleInputIdeaCard(event)}
+            onInput={e => this.handleInputIdeaCard(e)}
           >
             {this.state.prevIdea}
           </p>

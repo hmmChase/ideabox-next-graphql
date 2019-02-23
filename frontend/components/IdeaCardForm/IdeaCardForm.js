@@ -1,5 +1,6 @@
 import { gql } from 'apollo-boost';
 import { Mutation } from 'react-apollo';
+import { ALL_IDEAS_QUERY } from '../IdeaContainer/IdeaContainer';
 
 const CREATE_IDEA_MUTATION = gql`
   mutation CREATE_IDEA_MUTATION($idea: String!) {
@@ -38,7 +39,11 @@ class IdeaCardForm extends React.Component {
 
   render() {
     return (
-      <Mutation mutation={CREATE_IDEA_MUTATION} variables={{ idea: this.state.idea }}>
+      <Mutation
+        mutation={CREATE_IDEA_MUTATION}
+        variables={{ idea: this.state.idea }}
+        refetchQueries={[{ query: ALL_IDEAS_QUERY }]}
+      >
         {newIdea => (
           <form
             className="IdeaCardForm"

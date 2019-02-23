@@ -1,10 +1,12 @@
 # import * from '../prisma/generated/prisma.graphql'
 
 type Query {
-  idea(id: Int!): Idea
+  idea(id: ID!): Idea
   ideas: [Idea]!
 }
 
 type Mutation {
-  newIdea(idea: String!): Idea!
+  createIdea(idea: String!): Idea!
+  updateIdea(id: ID!, idea: String!): Idea
+  deleteIdea(id: ID!): Idea
 }

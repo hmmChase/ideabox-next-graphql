@@ -2,7 +2,7 @@ import { gql } from 'apollo-boost';
 import { Query } from 'react-apollo';
 import IdeaCard from '../IdeaCard/IdeaCard';
 
-const ALL_IDEAS_QUERY = gql`
+export const ALL_IDEAS_QUERY = gql`
   query ALL_IDEAS_QUERY {
     ideas {
       id
