@@ -1,5 +1,15 @@
 import { gql } from 'apollo-boost';
 import { Mutation } from 'react-apollo';
+import { ALL_IDEAS_QUERY } from '../IdeaContainer/IdeaContainer';
+
+const UPDATE_IDEA_MUTATION = gql`
+  mutation UPDATE_IDEA_MUTATION($id: ID!, $idea: String!) {
+    updateIdea(id: $id, idea: $idea) {
+      id
+      idea
+    }
+  }
+`;
 
 const DELETE_IDEA_MUTATION = gql`
   mutation DELETE_IDEA_MUTATION($id: ID!) {
@@ -15,15 +25,8 @@ class IdeaCard extends React.Component {
     nextIdea: this.props.idea
   };
 
-  handleInputIdeaCard = (e) => {
-    this.setState(
-      { nextIdea: e.target.innerText }
-      // async () => await this.props.dispatchUpdateIdea(
-      //   this.props.id,
-      //   this.state.nextIdea,
-      //   this.props.stateIdeas
-      // )
-    );
+  handleInputIdeaCard = (e, updateIdea) => {
+    this.setState({ nextIdea: e.target.innerText }, updateIdea);
   };
 
   handleClickDeleteBtn = (e, deleteIdea) => {
@@ -36,7 +39,11 @@ class IdeaCard extends React.Component {
     return (
       <li className="IdeaCard">
         <div className="ideaCardContent">
-          <Mutation mutation={DELETE_IDEA_MUTATION} variables={{ id: this.props.id }}>
+          <Mutation
+            mutation={DELETE_IDEA_MUTATION}
+            variables={{ id: this.props.id }}
+            refetchQueries={[{ query: ALL_IDEAS_QUERY }]}
+          >
             {deleteIdea => (
               <button
                 className="deleteBtn"
@@ -47,15 +54,25 @@ class IdeaCard extends React.Component {
               </button>
             )}
           </Mutation>
-
-          <p
-            className="ideaCardText"
-            contentEditable
-            suppressContentEditableWarning
-            onInput={e => this.handleInputIdeaCard(e)}
+          <Mutation
+            mutation={UPDATE_IDEA_MUTATION}
+            variables={{
+              id: this.props.id,
+              idea: this.state.nextIdea
+            }}
+            refetchQueries={[{ query: ALL_IDEAS_QUERY }]}
           >
-            {this.state.prevIdea}
-          </p>
+            {updateIdea => (
+              <p
+                className="ideaCardText"
+                contentEditable
+                suppressContentEditableWarning
+                onInput={e => this.handleInputIdeaCard(e, updateIdea)}
+              >
+                {this.state.prevIdea}
+              </p>
+            )}
+          </Mutation>
         </div>
       </li>
     );

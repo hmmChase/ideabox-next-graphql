@@ -4,7 +4,7 @@ import { ALL_IDEAS_QUERY } from '../IdeaContainer/IdeaContainer';
 
 const CREATE_IDEA_MUTATION = gql`
   mutation CREATE_IDEA_MUTATION($idea: String!) {
-    newIdea(idea: $idea) {
+    createIdea(idea: $idea) {
       id
     }
   }
@@ -29,11 +29,11 @@ class IdeaCardForm extends React.Component {
     this.setState({ [name]: value }, () => this.canSubmit());
   };
 
-  handleSubmitIdeaForm = async (event, newIdea) => {
+  handleSubmitIdeaForm = async (event, createIdea) => {
     event.preventDefault();
     this.setState({ isSubmitDisabled: true });
     // await this.props.dispatchAddIdea(this.state.idea);
-    newIdea();
+    createIdea();
     this.setState({ idea: '' }, () => this.canSubmit());
   };
 
@@ -44,10 +44,10 @@ class IdeaCardForm extends React.Component {
         variables={{ idea: this.state.idea }}
         refetchQueries={[{ query: ALL_IDEAS_QUERY }]}
       >
-        {newIdea => (
+        {createIdea => (
           <form
             className="IdeaCardForm"
-            onSubmit={event => this.handleSubmitIdeaForm(event, newIdea)}
+            onSubmit={event => this.handleSubmitIdeaForm(event, createIdea)}
           >
             <input
               className="IdeaCardInput"
