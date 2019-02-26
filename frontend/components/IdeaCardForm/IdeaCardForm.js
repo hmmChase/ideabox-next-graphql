@@ -1,4 +1,5 @@
 import { gql } from 'apollo-boost';
+import styled from 'styled-components';
 import { Mutation } from 'react-apollo';
 import { ALL_IDEAS_QUERY } from '../IdeaContainer/IdeaContainer';
 
@@ -32,7 +33,6 @@ class IdeaCardForm extends React.Component {
   handleSubmitIdeaForm = async (event, createIdea) => {
     event.preventDefault();
     this.setState({ isSubmitDisabled: true });
-    // await this.props.dispatchAddIdea(this.state.idea);
     createIdea();
     this.setState({ idea: '' }, () => this.canSubmit());
   };
@@ -45,22 +45,19 @@ class IdeaCardForm extends React.Component {
         refetchQueries={[{ query: ALL_IDEAS_QUERY }]}
       >
         {createIdea => (
-          <form
-            className="IdeaCardForm"
-            onSubmit={event => this.handleSubmitIdeaForm(event, createIdea)}
-          >
-            <input
-              className="IdeaCardInput"
+          <StyledForm onSubmit={event => this.handleSubmitIdeaForm(event, createIdea)}>
+            <img src="static/ideabox.png" alt="ideabox" />
+            <textarea
               name="idea"
               type="text"
-              placeholder="Enter idea"
+              placeholder="What's on your mind?"
               value={this.state.idea}
               onChange={event => this.handleChangeIdeaInput(event)}
             />
             <button type="submit" disabled={this.state.isSubmitDisabled}>
-              Add idea
+              Add Idea
             </button>
-          </form>
+          </StyledForm>
         )}
       </Mutation>
     );
@@ -68,3 +65,27 @@ class IdeaCardForm extends React.Component {
 }
 
 export default IdeaCardForm;
+
+const StyledForm = styled.form`
+  display: flex;
+  width: 80%;
+  max-width: 800px;
+  position: relative;
+  img {
+    width: 100px;
+    position: absolute;
+    top: -60px;
+    left: -45px;
+  }
+  textarea {
+    padding: 10px;
+    outline: none;
+    width: 100%;
+    padding-left: 20px;
+  }
+  button {
+    width: 60px;
+    border: none;
+    background-color: none;
+  }
+`;

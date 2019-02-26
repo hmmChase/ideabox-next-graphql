@@ -14,9 +14,7 @@ export default createGlobalStyle`
     padding: 0;
     margin: 0;
     color: ${theme.black};
-  }
-
-  a {
-    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
   }
 `;

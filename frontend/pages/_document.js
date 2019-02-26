@@ -36,7 +36,18 @@ class MyDocument extends Document {
   render() {
     return (
       <html lang="en">
-        <Head />
+        <Head>
+          <meta charSet="utf-8" />
+          <meta name="description" content="" />
+          <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+          <link rel="shortcut icon" href="/static/favicon.ico" />
+          <title>IdeaBox</title>
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+          />
+          <link href="https://fonts.googleapis.com/css?family=Open+Sans|Play" rel="stylesheet" />
+        </Head>
         <body>
           <Main />
           <NextScript />
