@@ -13,9 +13,7 @@ export const ALL_IDEAS_QUERY = gql`
 `;
 
 class IdeaContainer extends React.PureComponent {
-  displayIdeaCards = data => data.ideas
-    .map(idea => <IdeaCard key={`ideaCard${idea.id}`} {...idea} />)
-    .sort((a, b) => b.props.id - a.props.id);
+  displayIdeaCards = data => data.ideas.map(idea => <IdeaCard key={`ideaCard${idea.id}`} {...idea} />);
 
   render() {
     return (

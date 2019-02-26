@@ -82,6 +82,7 @@ const StyledForm = styled.form`
     outline: none;
     width: 100%;
     padding-left: 20px;
+    resize: vertical;
   }
   button {
     width: 60px;

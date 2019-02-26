@@ -99,15 +99,11 @@ const StyledDeleteBtn = styled.button`
   border: none;
   cursor: pointer;
   border-radius: 50%;
-  /* margin: 0 10px 0 0; */
-  /* vertical-align: middle; */
 `;
 
 const StyledIdeaP = styled.p`
   text-align: left;
-  /* vertical-align: middle; */
   width: 100%;
-  /* display: inline-block; */
   outline: none;
   border: black solid 1px;
   padding: 5px;
