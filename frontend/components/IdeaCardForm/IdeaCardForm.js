@@ -86,6 +86,6 @@ const StyledForm = styled.form`
   button {
     width: 60px;
     border: none;
-    background-color: none;
+    background-color: #fffacd;
   }
 `;
