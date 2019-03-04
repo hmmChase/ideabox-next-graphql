@@ -4,14 +4,17 @@ import IdeaContainer from '../../components/IdeaContainer/IdeaContainer';
 
 describe('IdeaContainer', () => {
   let mockProps;
-  let ideaContainer;
+  let wrapper;
 
   beforeEach(() => {
-    mockProps = {};
-    ideaContainer = shallow(<IdeaContainer {...mockProps} />);
+    jest.resetAllMocks();
+    mockProps = { children: [] };
+    wrapper = shallow(<IdeaContainer {...mockProps} />, {
+      disableLifecycleMethods: true
+    });
   });
 
   it('matches snapshot', () => {
-    expect(ideaContainer).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });

@@ -4,14 +4,17 @@ import IdeaCardForm from '../../components/IdeaCardForm/IdeaCardForm';
 
 describe('IdeaCardForm', () => {
   let mockProps;
-  let ideaCardForm;
+  let wrapper;
 
   beforeEach(() => {
-    mockProps = {};
-    ideaCardForm = shallow(<IdeaCardForm {...mockProps} />);
+    jest.resetAllMocks();
+    mockProps = { children: [] };
+    wrapper = shallow(<IdeaCardForm {...mockProps} />, {
+      disableLifecycleMethods: true
+    });
   });
 
   it('matches snapshot', () => {
-    expect(ideaCardForm).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });

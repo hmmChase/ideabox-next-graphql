@@ -4,14 +4,17 @@ import Header from '../../components/Header/Header';
 
 describe('Header', () => {
   let mockProps;
-  let header;
+  let wrapper;
 
   beforeEach(() => {
-    mockProps = {};
-    header = shallow(<Header {...mockProps} />);
+    jest.resetAllMocks();
+    mockProps = { children: [] };
+    wrapper = shallow(<Header {...mockProps} />, {
+      disableLifecycleMethods: true
+    });
   });
-
+ 
   it('matches snapshot', () => {
-    expect(header).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });

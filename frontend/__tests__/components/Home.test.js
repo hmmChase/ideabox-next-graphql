@@ -4,14 +4,17 @@ import Home from '../../components/Home/Home';
 
 describe('Home', () => {
   let mockProps;
-  let home;
+  let wrapper;
 
   beforeEach(() => {
-    mockProps = {};
-    home = shallow(<Home {...mockProps} />);
+    jest.resetAllMocks();
+    mockProps = { children: [] };
+    wrapper = shallow(<Home {...mockProps} />, {
+      disableLifecycleMethods: true
+    });
   });
 
   it('matches snapshot', () => {
-    expect(home).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });

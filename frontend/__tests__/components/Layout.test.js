@@ -4,14 +4,17 @@ import Layout from '../../components/Layout/Layout';
 
 describe('Layout', () => {
   let mockProps;
-  let layout;
+  let wrapper;
 
   beforeEach(() => {
+    jest.resetAllMocks();
     mockProps = { children: [] };
-    layout = shallow(<Layout {...mockProps} />);
+    wrapper = shallow(<Layout {...mockProps} />, {
+      disableLifecycleMethods: true
+    });
   });
 
   it('matches snapshot', () => {
-    expect(layout).toMatchSnapshot();
+    expect(wrapper).toMatchSnapshot();
   });
 });
