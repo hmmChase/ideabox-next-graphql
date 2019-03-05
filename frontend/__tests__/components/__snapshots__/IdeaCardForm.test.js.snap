@@ -1,31 +1,84 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`IdeaCardForm matches snapshot 1`] = `
-<Mutation
-  mutation={
-    Object {
-      "definitions": Array [
-        Object {
-          "directives": Array [],
-          "kind": "OperationDefinition",
-          "name": Object {
-            "kind": "Name",
-            "value": "CREATE_IDEA_MUTATION",
-          },
-          "operation": "mutation",
-          "selectionSet": Object {
-            "kind": "SelectionSet",
-            "selections": Array [
+<MockedProvider
+  addTypename={false}
+  mocks={
+    Array [
+      Object {
+        "request": Object {
+          "query": Object {
+            "definitions": Array [
               Object {
-                "alias": undefined,
-                "arguments": Array [
-                  Object {
-                    "kind": "Argument",
-                    "name": Object {
-                      "kind": "Name",
-                      "value": "idea",
+                "directives": Array [],
+                "kind": "OperationDefinition",
+                "name": Object {
+                  "kind": "Name",
+                  "value": "CREATE_IDEA_MUTATION",
+                },
+                "operation": "mutation",
+                "selectionSet": Object {
+                  "kind": "SelectionSet",
+                  "selections": Array [
+                    Object {
+                      "alias": undefined,
+                      "arguments": Array [
+                        Object {
+                          "kind": "Argument",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "idea",
+                          },
+                          "value": Object {
+                            "kind": "Variable",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "idea",
+                            },
+                          },
+                        },
+                      ],
+                      "directives": Array [],
+                      "kind": "Field",
+                      "name": Object {
+                        "kind": "Name",
+                        "value": "createIdea",
+                      },
+                      "selectionSet": Object {
+                        "kind": "SelectionSet",
+                        "selections": Array [
+                          Object {
+                            "alias": undefined,
+                            "arguments": Array [],
+                            "directives": Array [],
+                            "kind": "Field",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "id",
+                            },
+                            "selectionSet": undefined,
+                          },
+                        ],
+                      },
                     },
-                    "value": Object {
+                  ],
+                },
+                "variableDefinitions": Array [
+                  Object {
+                    "defaultValue": undefined,
+                    "directives": Array [],
+                    "kind": "VariableDefinition",
+                    "type": Object {
+                      "kind": "NonNullType",
+                      "type": Object {
+                        "kind": "NamedType",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "String",
+                        },
+                      },
+                    },
+                    "variable": Object {
                       "kind": "Variable",
                       "name": Object {
                         "kind": "Name",
@@ -34,12 +87,38 @@ exports[`IdeaCardForm matches snapshot 1`] = `
                     },
                   },
                 ],
+              },
+            ],
+            "kind": "Document",
+            "loc": Object {
+              "end": 100,
+              "start": 0,
+            },
+          },
+          "variables": Object {
+            "idea": "mock idea",
+          },
+        },
+        "result": Object {
+          "data": Object {
+            "createIdea": Object {
+              "id": "1",
+            },
+          },
+        },
+      },
+      Object {
+        "request": Object {
+          "query": Object {
+            "definitions": Array [
+              Object {
                 "directives": Array [],
-                "kind": "Field",
+                "kind": "OperationDefinition",
                 "name": Object {
                   "kind": "Name",
-                  "value": "createIdea",
+                  "value": "ALL_IDEAS_QUERY",
                 },
+                "operation": "query",
                 "selectionSet": Object {
                   "kind": "SelectionSet",
                   "selections": Array [
@@ -50,73 +129,258 @@ exports[`IdeaCardForm matches snapshot 1`] = `
                       "kind": "Field",
                       "name": Object {
                         "kind": "Name",
-                        "value": "id",
+                        "value": "ideas",
                       },
-                      "selectionSet": undefined,
+                      "selectionSet": Object {
+                        "kind": "SelectionSet",
+                        "selections": Array [
+                          Object {
+                            "alias": undefined,
+                            "arguments": Array [],
+                            "directives": Array [],
+                            "kind": "Field",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "id",
+                            },
+                            "selectionSet": undefined,
+                          },
+                          Object {
+                            "alias": undefined,
+                            "arguments": Array [],
+                            "directives": Array [],
+                            "kind": "Field",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "idea",
+                            },
+                            "selectionSet": undefined,
+                          },
+                        ],
+                      },
                     },
                   ],
                 },
+                "variableDefinitions": Array [],
               },
             ],
+            "kind": "Document",
+            "loc": Object {
+              "end": 69,
+              "start": 0,
+            },
           },
-          "variableDefinitions": Array [
-            Object {
-              "defaultValue": undefined,
-              "directives": Array [],
-              "kind": "VariableDefinition",
-              "type": Object {
-                "kind": "NonNullType",
-                "type": Object {
-                  "kind": "NamedType",
-                  "name": Object {
-                    "kind": "Name",
-                    "value": "String",
-                  },
-                },
+        },
+        "result": Object {
+          "data": Object {
+            "ideas": Array [],
+          },
+        },
+      },
+    ]
+  }
+>
+  <ApolloProvider
+    client={
+      ApolloClient {
+        "__operations_cache__": Map {},
+        "cache": InMemoryCache {
+          "addTypename": false,
+          "cacheKeyRoot": CacheKeyNode {
+            "children": null,
+            "key": null,
+          },
+          "config": Object {
+            "addTypename": false,
+            "dataIdFromObject": [Function],
+            "fragmentMatcher": HeuristicFragmentMatcher {},
+            "resultCaching": true,
+          },
+          "data": DepTrackingCache {
+            "data": Object {},
+            "depend": [Function],
+          },
+          "maybeBroadcastWatch": [Function],
+          "optimisticData": DepTrackingCache {
+            "data": Object {},
+            "depend": [Function],
+          },
+          "silenceBroadcast": false,
+          "storeReader": StoreReader {
+            "cacheKeyRoot": CacheKeyNode {
+              "children": null,
+              "key": null,
+            },
+            "executeSelectionSet": [Function],
+            "executeStoreQuery": [Function],
+          },
+          "storeWriter": StoreWriter {},
+          "typenameDocumentCache": Map {},
+          "watches": Set {},
+        },
+        "clearStoreCallbacks": Array [],
+        "clientAwareness": Object {},
+        "defaultOptions": Object {},
+        "disableNetworkFetches": false,
+        "link": ApolloLink {
+          "request": [Function],
+        },
+        "mutate": [Function],
+        "query": [Function],
+        "queryDeduplication": true,
+        "reFetchObservableQueries": [Function],
+        "resetStore": [Function],
+        "resetStoreCallbacks": Array [],
+        "ssrMode": false,
+        "store": DataStore {
+          "cache": InMemoryCache {
+            "addTypename": false,
+            "cacheKeyRoot": CacheKeyNode {
+              "children": null,
+              "key": null,
+            },
+            "config": Object {
+              "addTypename": false,
+              "dataIdFromObject": [Function],
+              "fragmentMatcher": HeuristicFragmentMatcher {},
+              "resultCaching": true,
+            },
+            "data": DepTrackingCache {
+              "data": Object {},
+              "depend": [Function],
+            },
+            "maybeBroadcastWatch": [Function],
+            "optimisticData": DepTrackingCache {
+              "data": Object {},
+              "depend": [Function],
+            },
+            "silenceBroadcast": false,
+            "storeReader": StoreReader {
+              "cacheKeyRoot": CacheKeyNode {
+                "children": null,
+                "key": null,
               },
-              "variable": Object {
-                "kind": "Variable",
+              "executeSelectionSet": [Function],
+              "executeStoreQuery": [Function],
+            },
+            "storeWriter": StoreWriter {},
+            "typenameDocumentCache": Map {},
+            "watches": Set {},
+          },
+        },
+        "version": "2.4.13",
+        "watchQuery": [Function],
+      }
+    }
+  >
+    <IdeaCardForm
+      id="1"
+      idea="mock idea"
+    >
+      <Mutation
+        mutation={
+          Object {
+            "definitions": Array [
+              Object {
+                "directives": Array [],
+                "kind": "OperationDefinition",
                 "name": Object {
                   "kind": "Name",
-                  "value": "idea",
+                  "value": "CREATE_IDEA_MUTATION",
                 },
-              },
-            },
-          ],
-        },
-      ],
-      "kind": "Document",
-      "loc": Object {
-        "end": 100,
-        "start": 0,
-      },
-    }
-  }
-  refetchQueries={
-    Array [
-      Object {
-        "query": Object {
-          "definitions": Array [
-            Object {
-              "directives": Array [],
-              "kind": "OperationDefinition",
-              "name": Object {
-                "kind": "Name",
-                "value": "ALL_IDEAS_QUERY",
-              },
-              "operation": "query",
-              "selectionSet": Object {
-                "kind": "SelectionSet",
-                "selections": Array [
+                "operation": "mutation",
+                "selectionSet": Object {
+                  "kind": "SelectionSet",
+                  "selections": Array [
+                    Object {
+                      "alias": undefined,
+                      "arguments": Array [
+                        Object {
+                          "kind": "Argument",
+                          "name": Object {
+                            "kind": "Name",
+                            "value": "idea",
+                          },
+                          "value": Object {
+                            "kind": "Variable",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "idea",
+                            },
+                          },
+                        },
+                      ],
+                      "directives": Array [],
+                      "kind": "Field",
+                      "name": Object {
+                        "kind": "Name",
+                        "value": "createIdea",
+                      },
+                      "selectionSet": Object {
+                        "kind": "SelectionSet",
+                        "selections": Array [
+                          Object {
+                            "alias": undefined,
+                            "arguments": Array [],
+                            "directives": Array [],
+                            "kind": "Field",
+                            "name": Object {
+                              "kind": "Name",
+                              "value": "id",
+                            },
+                            "selectionSet": undefined,
+                          },
+                        ],
+                      },
+                    },
+                  ],
+                },
+                "variableDefinitions": Array [
                   Object {
-                    "alias": undefined,
-                    "arguments": Array [],
+                    "defaultValue": undefined,
                     "directives": Array [],
-                    "kind": "Field",
+                    "kind": "VariableDefinition",
+                    "type": Object {
+                      "kind": "NonNullType",
+                      "type": Object {
+                        "kind": "NamedType",
+                        "name": Object {
+                          "kind": "Name",
+                          "value": "String",
+                        },
+                      },
+                    },
+                    "variable": Object {
+                      "kind": "Variable",
+                      "name": Object {
+                        "kind": "Name",
+                        "value": "idea",
+                      },
+                    },
+                  },
+                ],
+              },
+            ],
+            "kind": "Document",
+            "loc": Object {
+              "end": 100,
+              "start": 0,
+            },
+          }
+        }
+        refetchQueries={
+          Array [
+            Object {
+              "query": Object {
+                "definitions": Array [
+                  Object {
+                    "directives": Array [],
+                    "kind": "OperationDefinition",
                     "name": Object {
                       "kind": "Name",
-                      "value": "ideas",
+                      "value": "ALL_IDEAS_QUERY",
                     },
+                    "operation": "query",
                     "selectionSet": Object {
                       "kind": "SelectionSet",
                       "selections": Array [
@@ -127,44 +391,111 @@ exports[`IdeaCardForm matches snapshot 1`] = `
                           "kind": "Field",
                           "name": Object {
                             "kind": "Name",
-                            "value": "id",
+                            "value": "ideas",
                           },
-                          "selectionSet": undefined,
-                        },
-                        Object {
-                          "alias": undefined,
-                          "arguments": Array [],
-                          "directives": Array [],
-                          "kind": "Field",
-                          "name": Object {
-                            "kind": "Name",
-                            "value": "idea",
+                          "selectionSet": Object {
+                            "kind": "SelectionSet",
+                            "selections": Array [
+                              Object {
+                                "alias": undefined,
+                                "arguments": Array [],
+                                "directives": Array [],
+                                "kind": "Field",
+                                "name": Object {
+                                  "kind": "Name",
+                                  "value": "id",
+                                },
+                                "selectionSet": undefined,
+                              },
+                              Object {
+                                "alias": undefined,
+                                "arguments": Array [],
+                                "directives": Array [],
+                                "kind": "Field",
+                                "name": Object {
+                                  "kind": "Name",
+                                  "value": "idea",
+                                },
+                                "selectionSet": undefined,
+                              },
+                            ],
                           },
-                          "selectionSet": undefined,
                         },
                       ],
                     },
+                    "variableDefinitions": Array [],
                   },
                 ],
+                "kind": "Document",
+                "loc": Object {
+                  "end": 69,
+                  "start": 0,
+                },
               },
-              "variableDefinitions": Array [],
             },
-          ],
-          "kind": "Document",
-          "loc": Object {
-            "end": 69,
-            "start": 0,
-          },
-        },
-      },
-    ]
-  }
-  variables={
-    Object {
-      "idea": "",
-    }
-  }
->
-  <Component />
-</Mutation>
+          ]
+        }
+        variables={
+          Object {
+            "idea": "",
+          }
+        }
+      >
+        <IdeaCardForm__StyledForm
+          onSubmit={[Function]}
+        >
+          <StyledComponent
+            forwardedComponent={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [],
+                "componentStyle": ComponentStyle {
+                  "componentId": "IdeaCardForm__StyledForm-sc-3wtm5n-0",
+                  "isStatic": true,
+                  "lastClassName": "gIavrb",
+                  "rules": Array [
+                    "display:flex;width:80%;max-width:800px;position:relative;img{width:100px;position:absolute;top:-60px;left:-45px;}textarea{padding:10px;outline:none;width:100%;padding-left:20px;resize:vertical;}button{width:60px;border:none;background-color:#fffacd;}",
+                  ],
+                },
+                "displayName": "IdeaCardForm__StyledForm",
+                "foldedComponentIds": Array [],
+                "render": [Function],
+                "styledComponentId": "IdeaCardForm__StyledForm-sc-3wtm5n-0",
+                "target": "form",
+                "toString": [Function],
+                "warnTooManyClasses": [Function],
+                "withComponent": [Function],
+              }
+            }
+            forwardedRef={null}
+            onSubmit={[Function]}
+          >
+            <form
+              className="IdeaCardForm__StyledForm-sc-3wtm5n-0 gIavrb"
+              onSubmit={[Function]}
+            >
+              <img
+                alt="ideabox"
+                src="static/ideabox.png"
+              />
+              <textarea
+                name="idea"
+                onChange={[Function]}
+                placeholder="What's on your mind?"
+                type="text"
+                value=""
+              />
+              <button
+                disabled={true}
+                type="submit"
+              >
+                Add Idea
+              </button>
+            </form>
+          </StyledComponent>
+        </IdeaCardForm__StyledForm>
+      </Mutation>
+    </IdeaCardForm>
+  </ApolloProvider>
+</MockedProvider>
 `;

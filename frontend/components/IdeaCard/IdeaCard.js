@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Mutation } from 'react-apollo';
 import { ALL_IDEAS_QUERY } from '../IdeaContainer/IdeaContainer';
 
-const UPDATE_IDEA_MUTATION = gql`
+export const UPDATE_IDEA_MUTATION = gql`
   mutation UPDATE_IDEA_MUTATION($id: ID!, $idea: String!) {
     updateIdea(id: $id, idea: $idea) {
       id
@@ -13,7 +13,7 @@ const UPDATE_IDEA_MUTATION = gql`
   }
 `;
 
-const DELETE_IDEA_MUTATION = gql`
+export const DELETE_IDEA_MUTATION = gql`
   mutation DELETE_IDEA_MUTATION($id: ID!) {
     deleteIdea(id: $id) {
       id
@@ -33,6 +33,7 @@ class IdeaCard extends React.Component {
 
   handleClickDeleteBtn = (e, deleteIdea) => {
     e.target.disabled = true;
+    console.log('click');
     deleteIdea();
   };
 

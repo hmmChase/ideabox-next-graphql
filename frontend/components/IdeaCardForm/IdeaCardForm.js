@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Mutation } from 'react-apollo';
 import { ALL_IDEAS_QUERY } from '../IdeaContainer/IdeaContainer';
 
-const CREATE_IDEA_MUTATION = gql`
+export const CREATE_IDEA_MUTATION = gql`
   mutation CREATE_IDEA_MUTATION($idea: String!) {
     createIdea(idea: $idea) {
       id
