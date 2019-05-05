@@ -1,11 +1,9 @@
-const Query = {
+export default {
   idea: (parent, args, ctx, info) => {
-    return ctx.prisma.idea({ where: { id: args.id } }, info);
+    return ctx.prisma.query.idea({ where: { id: args.id } });
   },
 
   ideas: (parent, args, ctx, info) => {
-    return ctx.prisma.ideas({}, info);
+    return ctx.prisma.query.ideas();
   }
 };
-
-module.exports = Query;

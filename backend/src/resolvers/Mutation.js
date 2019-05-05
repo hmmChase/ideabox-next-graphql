@@ -1,29 +1,18 @@
-const Mutation = {
-  createIdea: (parent, args, ctx, info) => {
-    return ctx.prisma.createIdea(
-      {
-        idea: args.idea
-      },
-      info
-    );
+export default {
+  createIdea: async (parent, args, ctx, info) => {
+    return await ctx.prisma.mutation.createIdea({
+      data: { idea: args.idea }
+    });
   },
-  updateIdea: (parent, args, ctx, info) => {
-    return ctx.prisma.updateIdea(
-      {
-        data: { idea: args.idea },
-        where: { id: args.id }
-      },
-      info
-    );
+  updateIdea: async (parent, args, ctx, info) => {
+    return await ctx.prisma.mutation.updateIdea({
+      data: { idea: args.idea },
+      where: { id: args.id }
+    });
   },
-  deleteIdea: (parent, args, ctx, info) => {
-    return ctx.prisma.deleteIdea(
-      {
-        id: args.id
-      },
-      info
-    );
+  deleteIdea: async (parent, args, ctx, info) => {
+    return await ctx.prisma.mutation.deleteIdea({
+      where: { id: args.id }
+    });
   }
 };
-
-module.exports = Mutation;

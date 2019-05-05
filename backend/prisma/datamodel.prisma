@@ -1,4 +1,6 @@
-type Idea {
-  id: ID! @unique
+type Idea @db(name: "idea") {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
   idea: String!
 }
