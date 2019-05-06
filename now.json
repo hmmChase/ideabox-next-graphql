@@ -1,5 +1,5 @@
 {
-  "name": "ideabox-next-graphql",
+  "name": "ideabox-v3",
   "version": 2,
   "builds": [
     { "src": "frontend/package.json", "use": "@now/next" },
