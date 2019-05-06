@@ -6,27 +6,13 @@ import apolloServer from './apolloServer';
 const app = express();
 const server = apolloServer();
 
-// const corsOptions = {
-//   credentials: true,
-//   origin:
-//     process.env.NODE_ENV === 'production'
-//       ? process.env.PROD_FRONTEND_URL
-//       : process.env.DEV_FRONTEND_URL
-// };
-
-// app.use(cors(corsOptions));
-
-// cors: corsOptions
-
 server.applyMiddleware({ app, path: '/graphql' });
 
-app.listen({ port: process.env.PORT || 4000 }, err => {
+app.listen({ port: 8888 }, err => {
   console.log('\n'.repeat(99));
 
   if (err) throw err;
   console.log(
-    `Apollo Server ready at http://localhost:${process.env.PORT}${
-      server.graphqlPath
-    }`
+    `Apollo Server ready at http://localhost:8888${server.graphqlPath}`
   );
 });
