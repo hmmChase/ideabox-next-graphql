@@ -33,7 +33,6 @@ class IdeaCard extends React.Component {
 
   handleClickDeleteBtn = (e, deleteIdea) => {
     e.target.disabled = true;
-    console.log('click');
     deleteIdea();
   };
 
@@ -43,8 +42,7 @@ class IdeaCard extends React.Component {
         <Mutation
           mutation={DELETE_IDEA_MUTATION}
           variables={{ id: this.props.id }}
-          refetchQueries={[{ query: ALL_IDEAS_QUERY }]}
-        >
+          refetchQueries={[{ query: ALL_IDEAS_QUERY }]}>
           {deleteIdea => (
             <StyledDeleteBtn
               type="button"
@@ -58,14 +56,12 @@ class IdeaCard extends React.Component {
             id: this.props.id,
             idea: this.state.nextIdea
           }}
-          refetchQueries={[{ query: ALL_IDEAS_QUERY }]}
-        >
+          refetchQueries={[{ query: ALL_IDEAS_QUERY }]}>
           {updateIdea => (
             <StyledIdeaP
               contentEditable
               suppressContentEditableWarning
-              onInput={e => this.handleInputIdeaCard(e, updateIdea)}
-            >
+              onInput={e => this.handleInputIdeaCard(e, updateIdea)}>
               {this.state.prevIdea}
             </StyledIdeaP>
           )}
